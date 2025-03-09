@@ -45,9 +45,11 @@ export default function UserList({
 
   return (
     <div className="mt-4">
-      <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-        Showing users for "{searchQuery}"
-      </p>
+      {users.length > 0 && (
+        <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+          Showing users for "{searchQuery}"
+        </p>
+      )}
       <div className="flex flex-col gap-3">
         {users.map((user) => (
           <button

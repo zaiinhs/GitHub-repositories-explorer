@@ -246,10 +246,83 @@ const handleSearch = async (username: string) => {
    - Handle edge cases
 
 4. **Testing**
-   - Write unit tests for utilities
-   - Test component rendering
-   - Test error scenarios
-   - Test theme switching
+
+   ### Test Structure
+
+   ```
+   src/
+   └── components/
+       └── __tests__/
+           ├── SearchBar.test.tsx    # Unit tests for SearchBar
+           ├── UserList.test.tsx     # Unit tests for UserList
+           └── integration.test.tsx  # Integration tests
+   ```
+
+   ### Testing Stack
+
+   - Jest as the test runner
+   - React Testing Library for component testing
+   - jest-dom for DOM assertions
+   - user-event for simulating user interactions
+
+   ### Test Types
+
+   #### Unit Tests
+
+   - Component rendering
+   - User interactions
+   - Props validation
+   - State changes
+   - Error handling
+   - Loading states
+
+   #### Integration Tests
+
+   - Component interactions
+   - Data flow between components
+   - API call handling
+   - Error propagation
+   - State synchronization
+
+   ### Test Coverage
+
+   - Component rendering states
+   - User interactions (click, type, etc.)
+   - API success and error scenarios
+   - Empty states and edge cases
+   - Theme-related functionality
+
+   ### Testing Utilities
+
+   ```typescript
+   // Mock Setup
+   global.fetch = jest.fn();
+
+   // Navigation Mocks
+   jest.mock("next/navigation", () => ({
+     useRouter() {
+       return { push: jest.fn() };
+     },
+   }));
+
+   // Theme Mocks
+   jest.mock("next-themes", () => ({
+     useTheme: () => ({ theme: "light" }),
+   }));
+   ```
+
+   ### Running Tests
+
+   ```bash
+   # Run all tests
+   npm test
+
+   # Run tests in watch mode
+   npm run test:watch
+
+   # Run tests with coverage report
+   npm run test:coverage
+   ```
 
 ## 🔄 Future Improvements
 
